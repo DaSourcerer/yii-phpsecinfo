@@ -1,0 +1,3 @@
+[submodule "vendors/phpsecinfo"]
+	path = vendors/phpsecinfo
+	url = https://github.com/funkatron/phpsecinfo.git
