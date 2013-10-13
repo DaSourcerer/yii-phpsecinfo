@@ -1,0 +1,43 @@
+.phpsecinfo-result {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #aaaaaa;
+    background-color: #cccccc;
+    color: #000000;
+    margin-bottom: 5px;
+    padding: 2px;
+}
+
+.phpsecinfo-result :last {
+    margin-bottom: 0px;
+}
+
+.phpsecinfo-result-ok {
+    background-color: #00aa00;
+    border-color: #007700;
+    color: #fff;
+}
+
+.phpsecinfo-result-notice {
+    background-color: #FFA500;
+    border-color: #882200;
+    color: #000;
+}
+
+.phpsecinfo-result-warn {
+    background-color: #990000;
+    border-color: #440000;
+    color: #ffffff;
+}
+
+.phpsecinfo-result-notrun {
+    background-color: #cccccc;
+    color: #000000;
+}
+.phpsecinfo-result-error {
+    background-color: #F6AE15;
+    border-color: #ff0000;
+    border-style: dashed;
+    color: #000000;
+    font-weight: bold;
+}
