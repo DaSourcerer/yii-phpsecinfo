@@ -50,7 +50,7 @@ class PhpsecinfoWidget extends CWidget {
 		$tabs=array();
 		foreach($results['test_results'] as $title=>$data) {
 			$tabs[]=array(
-				'title'=>$title,
+				'title'=>CHtml::encode($title),
 				'view'=>'ext.phpsecinfo.views._tab',
 				'data'=>array(
 					'data'=>$data,
