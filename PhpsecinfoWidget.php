@@ -27,6 +27,7 @@
  * @author Da:Sourcerer <webmaster@dasourcerer.net>
  * @version 1.0
  * @license http://www.apache.org/licenses/LICENSE-2.0 ASL 2.0
+ * @see http://phpsecinfo.com
  */
 class PhpsecinfoWidget extends CWidget
 {
