@@ -1,9 +1,9 @@
 .phpsecinfo-result {
     border-style: solid;
     border-width: 2px;
-    border-color: #aaaaaa;
-    background-color: #cccccc;
-    color: #000000;
+    border-color: #aaa;
+    background-color: #ccc;
+    color: #000;
     margin-bottom: 5px;
     padding: 2px;
 }
@@ -20,29 +20,65 @@
 
 .phpsecinfo-result-notice {
     background-color: #FFA500;
-    border-color: #882200;
+    border-color: #88780e;
     color: #000;
 }
 
 .phpsecinfo-result-warn {
-    background-color: #990000;
-    border-color: #440000;
-    color: #ffffff;
+    background-color: #900;
+    border-color: #400;
+    color: #fff;
 }
 
 .phpsecinfo-result-notrun {
-    background-color: #cccccc;
-    color: #000000;
+    background-color: #ccc;
+    color: #000;
 }
 .phpsecinfo-result-error {
     background-color: #F6AE15;
-    border-color: #ff0000;
+    border-color: #f00;
     border-style: dashed;
-    color: #000000;
+    color: #000;
     font-weight: bold;
 }
 
 .phpsecinfo-warning-icon {
     color: #ff0000;
     font-weight: bolder;
+}
+
+.phpsecinfo-result .detail-view {
+    border: 0px;
+}
+
+.phpsecinfo-result-ok .detail-view .odd {
+    background-color: #007700;
+}
+
+.phpsecinfo-result-ok .detail-view .even {
+    background-color: #00cc00;
+}
+
+.phpsecinfo-result-notice .detail-view .odd {
+    background-color: #776707;
+}
+
+.phpsecinfo-result-notice .detail-view .even {
+    background-color: #ccc227;
+}
+
+.phpsecinfo-result-warn .detail-view .odd {
+    background-color: #77140f;
+}
+
+.phpsecinfo-result-warn .detail-view .even {
+    background-color: #cc3737;
+}
+
+.phpsecinfo-result-error .detail-view .odd {
+    background-color: #776707;
+}
+
+.phpsecinfo-result-error .detail-view .even {
+    background-color: #ccc227;
 }
