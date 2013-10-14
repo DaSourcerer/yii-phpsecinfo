@@ -31,6 +31,7 @@
 class PhpsecinfoWidget extends CWidget
 {
 	/**
+	 * This widget's CSS file. If set to false, the bundled CSS will be used.
 	 *
 	 * @var string|bool
 	 */
@@ -79,6 +80,12 @@ class PhpsecinfoWidget extends CWidget
 		));
 	}
 
+	/**
+	 * Check if a result set contains any warnings
+	 *
+	 * @param $data
+	 * @return bool
+	 */
 	protected function hasWarnings($data)
 	{
 		foreach($data as $d)
