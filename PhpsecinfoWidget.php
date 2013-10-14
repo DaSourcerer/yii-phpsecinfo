@@ -51,7 +51,6 @@ class PhpsecinfoWidget extends CWidget {
 		foreach($results['test_results'] as $title=>$data) {
 			$tabs[]=array(
 				'title'=>$title,
-				//'view'=>$this->getViewFile('_tab'),
 				'view'=>'ext.phpsecinfo.views._tab',
 				'data'=>array(
 					'data'=>$data,
