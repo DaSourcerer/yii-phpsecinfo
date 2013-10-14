@@ -28,14 +28,16 @@
  * @version 1.0
  * @license http://www.apache.org/licenses/LICENSE-2.0 ASL 2.0
  */
-class PhpsecinfoWidget extends CWidget {
+class PhpsecinfoWidget extends CWidget
+{
 	/**
 	 *
 	 * @var string|bool
 	 */
 	public $cssFile=false;
 
-	public function init() {
+	public function init()
+	{
 		Yii::import('ext.phpsecinfo.vendors.phpsecinfo.PhpSecInfo.PhpSecInfo');
 		if($this->cssFile === false)
 			$this->cssFile=dirname(__FILE__).DIRECTORY_SEPARATOR.'assets'.DIRECTORY_SEPARATOR.'results.css';
@@ -43,20 +45,20 @@ class PhpsecinfoWidget extends CWidget {
 		Yii::app()->getClientScript()->registerCssFile($path.DIRECTORY_SEPARATOR.basename($this->cssFile));
 	}
 
-	public function run() {
+	public function run()
+	{
 		$psi=new PhpSecInfo();
 		$psi->loadAndRun();
 		$results=$psi->getResultsAsArray();
 		$tabs=array();
-		foreach($results['test_results'] as $title=>$data) {
+		foreach($results['test_results'] as $title=>$data)
 			$tabs[]=array(
-				'title'=>CHtml::encode($title),
+				'title'=>CHtml::encode($title).($this->hasWarnings($data)?'&nbsp;<span class="phpsecinfo-warning-icon">&#x26a0;</span>':''),
 				'view'=>'ext.phpsecinfo.views._tab',
 				'data'=>array(
 					'data'=>$data,
 				),
 			);
-		}
 		$tabs[]=array(
 			'title'=>'Skipped',
 			'view'=>'ext.phpsecinfo.views._tab',
@@ -75,5 +77,14 @@ class PhpsecinfoWidget extends CWidget {
 		echo $this->render('index', array(
 			'tabs'=>$tabs,
 		));
+	}
+
+	protected function hasWarnings($data)
+	{
+		foreach($data as $d)
+			if($d['result']==PHPSECINFO_TEST_RESULT_WARN)
+				return true;
+
+		return false;
 	}
 }

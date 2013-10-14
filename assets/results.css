@@ -41,3 +41,8 @@
     color: #000000;
     font-weight: bold;
 }
+
+.phpsecinfo-warning-icon {
+    color: #ff0000;
+    font-weight: bolder;
+}
