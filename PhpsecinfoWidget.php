@@ -15,23 +15,32 @@
  */
 
 /**
- * PhpsecinfoWidget class
+ * PhpsecinfoWidget is wrapping around the {@link http://phpsecinfo.com PhpSecInfo} library.
  *
- * @author Da:Sourcerer
+ * PhpSecInfo is a library intending to be the security equivalent of phpinfo(). This widget
+ * runs the tests provided by PhpSecInfo and wraps the results up nicely in a tab view, ready
+ * to be included into your dashboard.
+ *
+ * Please take note that the sheer presence of this widget does not add any extra security
+ * whatsoever. It is merely a monitoring tool for security-related PHP settings.
+ *
+ * @author Da:Sourcerer <webmaster@dasourcerer.net>
  * @version 1.0
  * @license http://www.apache.org/licenses/LICENSE-2.0 ASL 2.0
  */
 class PhpsecinfoWidget extends CWidget {
-	public $view='application.extensions.phpsecinfo.views.index';
-
+	/**
+	 *
+	 * @var string|bool
+	 */
 	public $cssFile=false;
 
 	public function init() {
-		Yii::import('application.extensions.phpsecinfo.vendors.phpsecinfo.PhpSecInfo.*');
+		Yii::import('ext.phpsecinfo.vendors.phpsecinfo.PhpSecInfo.PhpSecInfo');
 		if($this->cssFile === false)
-			$this->cssFile=dirname(__FILE__).'/assets/results.css';
+			$this->cssFile=dirname(__FILE__).DIRECTORY_SEPARATOR.'assets'.DIRECTORY_SEPARATOR.'results.css';
 		$path=Yii::app()->getAssetManager()->publish(dirname($this->cssFile));
-		Yii::app()->getClientScript()->registerCssFile($path.'/'.basename($this->cssFile));
+		Yii::app()->getClientScript()->registerCssFile($path.DIRECTORY_SEPARATOR.basename($this->cssFile));
 	}
 
 	public function run() {
@@ -42,7 +51,8 @@ class PhpsecinfoWidget extends CWidget {
 		foreach($results['test_results'] as $title=>$data) {
 			$tabs[]=array(
 				'title'=>$title,
-				'view'=>'application.extensions.phpsecinfo.views._tab',
+				//'view'=>$this->getViewFile('_tab'),
+				'view'=>'ext.phpsecinfo.views._tab',
 				'data'=>array(
 					'data'=>$data,
 				),
@@ -50,20 +60,20 @@ class PhpsecinfoWidget extends CWidget {
 		}
 		$tabs[]=array(
 			'title'=>'Skipped',
-			'view'=>'application.extensions.phpsecinfo.views._tab',
+			'view'=>'ext.phpsecinfo.views._tab',
 			'data'=>array(
 				'data'=>$results['tests_not_run'],
 			),
 		);
 		$tabs[]=array(
 			'title'=>'Summary',
-			'view'=>'application.extensions.phpsecinfo.views._summary',
+			'view'=>'ext.phpsecinfo.views._summary',
 			'data'=>array(
 				'results'=>$results['result_counts'],
 				'num_run_tests'=>$results['num_tests_run'],
 			),
 		);
-		echo $this->render($this->view, array(
+		echo $this->render('index', array(
 			'tabs'=>$tabs,
 		));
 	}

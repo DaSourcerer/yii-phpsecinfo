@@ -5,5 +5,5 @@
 			'pageSize'=>5,
 		),
 	)),
-	'itemView'=>'application.extensions.phpsecinfo.views._view',
+	'itemView'=>'ext.phpsecinfo.views._view',
 ));
